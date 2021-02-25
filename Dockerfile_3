@@ -1,0 +1,25 @@
+#LABEL maintainer="newsun87@mail.sju.edu.tw" \    
+#    org.label-schema.project="/mpsyt_play_docker" \
+#    org.label-schema.docker.cmd = "sudo docker run -it -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/root/.Xauthority \
+# --net=host --device /dev/snd  --device /dev/gpiomem youtube-player-led:v1 \
+#      /bin/bash player_start.sh"
+
+#MAINTAINER newsun87@mail.sju.edu.tw
+
+FROM newsun87/youtube-player:v1
+USER root
+RUN apt-get install python3-rpi.gpio -y
+USER pi
+WORKDIR /home/pi/app 
+COPY . ./
+CMD echo "Hello world"
+
+
+#修正 mplayer 錯誤
+# sudo apt-get install --reinstall libraspberrypi0 libraspberrypi-dev libraspberrypi-doc libraspberrypi-bin
+# mplayer 播放器不穩定，設定預設 mpv
+# 本機環境設定 export DISPLAY=:0.0 
+
+
+
+

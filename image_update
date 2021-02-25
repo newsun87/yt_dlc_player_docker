@@ -1,0 +1,45 @@
+apt update && apt list --upgradable 
+apt install -y python3-pip 
+pip3 install --upgrade pip
+apt-get install alsa-utils
+apt install nano
+apt install -y mplayer
+sudo apt-get install --reinstall libraspberrypi0 libraspberrypi-dev libraspberrypi-doc libraspberrypi-bin
+
+# update python from python 3.5 to 3.6.3
+ref . http://www.knight-of-pi.org/installing-python3-6-on-a-raspberry-pi/
+cd ~
+sudo apt-get install python3-dev libffi-dev libssl-dev -y
+wget https://www.python.org/ftp/python/3.6.3/Python-3.6.3.tar.xz
+tar xJf Python-3.6.3.tar.xz
+cd Python-3.6.3
+./configure
+make
+sudo make install
+sudo pip3 install --upgrade pip
+sudo nano ~/.bashrc
+alias python3=python3.6
+source ~/.bashrc
+
+sudo apt-get install -y python-configparser
+sudo pip3 install mps-youtube
+sudo pip3 install youtube-dl
+sudo pip3 install --upgrade youtube-dl
+sudo pip3 install mps-youtube --upgrade
+sudo pip3 install dbus-python pygobject
+ด๚ธี
+export DISPLAY=:0
+echo 'some text' | xclip -selection clipboard
+pip3 install --upgrade youtube-dl
+
+
+#RUN apt install python-configparser
+#RUN apt install python3-rpi.gpio
+#RUN apt install wiringpi
+#WORKDIR mpsyt_play_docker
+#COPY . ./
+#RUN pip3 install -r requirements.txt
+#ENTRYPOINT ["/bin/bash", "start.sh"]
+#USER pi
+#CMD echo "Hello world"
+#CMD python app.py

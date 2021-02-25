@@ -1,0 +1,12 @@
+LABEL maintainer="newsun87 <newsun87@mail.com.tw>" \
+      org.label-schema.description="original base image raspbian/desktop" \    
+      org.label-schema.docker.cmd="docker build -t run raspbian/desktop:v1 Dockerfile_1 ."
+MAINTAINER newsun87@mail.sju.edu.tw
+
+FROM raspbian/desktop
+USER root
+ENV LANG C.UTF-8
+RUN  apt-get update  -y 
+RUN  apt-get install python3-pip -y && \
+     apt-get clean && apt-get purge 
+CMD echo "Hello world"

@@ -1,0 +1,34 @@
+LABEL maintainer="newsun87@mail.sju.edu.tw" \    
+    org.label-schema.project="/mpsyt_play_docker" \
+        org.label-schema.docker.cmd = "docker build -t youtube-player:v1 Dockerfile_2 ." 
+MAINTAINER newsun87@mail.sju.edu.tw
+
+FROM newsun87/raspbian-desktop:v1
+USER root
+ENV LANG C.UTF-8
+RUN apt-get install mplayer -y && apt install mpv -y && \
+    pip3 install --upgrade pip && \
+    pip3 install mps-youtube youtube-dl && \
+    pip3 install dbus-python pygobject && \
+    pip3 install paho-mqtt && \     
+    pip3 install requests && \
+    pip3 install pyperclip && \
+    pip3 install firebase-admin && \
+    pip3 install --upgrade youtube-dl && \
+    apt-get install xclip -y && \
+    apt-get install xsel -y && \
+    apt-get install python-configparser -y
+USER pi
+WORKDIR /home/pi/app 
+COPY . ./
+CMD echo "Hello world"
+
+
+#修正 mplayer 錯誤
+# sudo apt-get install --reinstall libraspberrypi0 libraspberrypi-dev libraspberrypi-doc libraspberrypi-bin
+# mplayer 播放器不穩定，設定預設 mpv
+# 本機環境設定 export DISPLAY=:0.0 
+
+
+
+
